@@ -10,21 +10,17 @@ interface Props {
 
 export default function GameBoard({ mode: _, cards, shakingIds, onCardClick }: Props) {
   return (
-    <div className="board-bg flex-1 p-4 md:p-6">
+    <div className="board-bg flex-1 p-4 md:p-6 flex items-center justify-center">
       {/* Board bg image — swap with board-bg.svg later */}
-      <div
-        className="max-w-5xl mx-auto grid gap-2 md:gap-3"
-        style={{
-          gridTemplateColumns: "repeat(6, minmax(0, 1fr))",
-        }}
-      >
+      <div className="w-full max-w-5xl mx-auto flex flex-wrap justify-center gap-2 md:gap-3">
         {cards.map((card) => (
-          <MemoryCard
-            key={card.id}
-            card={card}
-            isShaking={shakingIds.includes(card.id)}
-            onClick={() => onCardClick(card.id)}
-          />
+          <div key={card.id} className="w-[calc((100%-5*8px)/6)] md:w-[calc((100%-5*12px)/6)]">
+            <MemoryCard
+              card={card}
+              isShaking={shakingIds.includes(card.id)}
+              onClick={() => onCardClick(card.id)}
+            />
+          </div>
         ))}
       </div>
     </div>
