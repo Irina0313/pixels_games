@@ -1,3 +1,4 @@
+// v2
 import { useState } from "react";
 import type { AppState, GameMode, GameResult } from "./types";
 import { saveRecord } from "./utils/records";
