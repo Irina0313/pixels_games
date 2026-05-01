@@ -21,7 +21,7 @@ export default function StartScreen({ onStart }: Props) {
       <div className="w-full max-w-2xl mx-auto animate-fadeIn">
 
         {/* Title */}
-        <h1 className="text-5xl md:text-6xl font-semibold text-white tracking-[-0.06em] mb-2">
+        <h1 className="text-5xl md:text-6xl font-pixel text-white mb-2">
           {GAME_TITLE}
         </h1>
         <p className="text-white/40 text-sm mb-10">

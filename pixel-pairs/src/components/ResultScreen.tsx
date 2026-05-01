@@ -28,7 +28,7 @@ export default function ResultScreen({
       <div className="w-full max-w-lg mx-auto animate-fadeIn">
 
         {/* Title */}
-        <h1 className="text-4xl md:text-5xl font-semibold text-white tracking-[-0.04em] mb-2">
+        <h1 className="text-4xl md:text-5xl font-pixel text-white mb-2">
           All pairs found!
         </h1>
 

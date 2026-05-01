@@ -13,8 +13,9 @@ export default {
         },
       },
       fontFamily: {
-        sans: ["Inter", "sans-serif"],
+        sans: ["Inter Tight", "sans-serif"],
         pixel: ["Pixelify Sans", "monospace"],
+        mono: ["Space Mono", "monospace"],
       },
       aspectRatio: {
         card: "3 / 4",
