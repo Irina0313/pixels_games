@@ -5,7 +5,7 @@ export default {
     extend: {
       colors: {
         game: {
-          bg: "#0f0f0f",
+          bg: "#000000",
           card: "#111111",
           border: "#ffffff",
           muted: "rgba(255,255,255,0.1)",
@@ -13,7 +13,7 @@ export default {
         },
       },
       fontFamily: {
-        mono: ["'Courier New'", "Courier", "monospace"],
+        sans: ["Inter", "sans-serif"],
       },
       aspectRatio: {
         card: "3 / 4",

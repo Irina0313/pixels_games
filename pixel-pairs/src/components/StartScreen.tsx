@@ -21,21 +21,21 @@ export default function StartScreen({ onStart }: Props) {
       <div className="w-full max-w-2xl mx-auto animate-fadeIn">
 
         {/* Title */}
-        <h1 className="text-5xl md:text-6xl font-mono text-white tracking-tight mb-2">
+        <h1 className="text-5xl md:text-6xl font-semibold text-white tracking-[-0.06em] mb-2">
           {GAME_TITLE}
         </h1>
-        <p className="text-white/40 font-mono text-sm mb-10">
+        <p className="text-white/40 text-sm mb-10">
           {GAME_SUBTITLE}
         </p>
 
         {/* Rules */}
         <div className="border border-white/10 p-5 mb-8 text-left">
-          <div className="text-white/30 text-xs uppercase tracking-widest mb-3 font-mono">
+          <div className="text-white/30 text-xs uppercase tracking-widest mb-3">
             Rules
           </div>
           <ol className="space-y-1">
             {GAME_RULES.map((rule, i) => (
-              <li key={i} className="text-white/60 font-mono text-sm">
+              <li key={i} className="text-white/60 text-sm">
                 {i + 1}. {rule}
               </li>
             ))}
@@ -67,7 +67,7 @@ function RecordsBlock({
 }) {
   return (
     <div>
-      <div className="text-white/30 text-xs uppercase tracking-widest mb-3 font-mono">
+      <div className="text-white/30 text-xs uppercase tracking-widest mb-3">
         {title}
       </div>
       <RecordsTable records={records} />

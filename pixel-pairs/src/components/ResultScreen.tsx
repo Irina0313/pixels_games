@@ -28,12 +28,12 @@ export default function ResultScreen({
       <div className="w-full max-w-lg mx-auto animate-fadeIn">
 
         {/* Title */}
-        <h1 className="text-4xl md:text-5xl font-mono text-white tracking-tight mb-2">
+        <h1 className="text-4xl md:text-5xl font-semibold text-white tracking-[-0.04em] mb-2">
           All pairs found!
         </h1>
 
         {/* Mode label */}
-        <p className="text-white/30 font-mono text-xs uppercase tracking-widest mb-8">
+        <p className="text-white/30 text-xs uppercase tracking-widest mb-8">
           {MODES[result.mode as GameMode].label}
         </p>
 
@@ -45,7 +45,7 @@ export default function ResultScreen({
 
         {/* Rank */}
         <div className="border border-white/20 p-4 mb-8 text-center">
-          <span className="font-mono text-white text-lg">
+          <span className="font-semibold text-white text-lg tracking-[-0.04em]">
             {getRankText(result.rank)}
           </span>
         </div>
@@ -54,13 +54,13 @@ export default function ResultScreen({
         <div className="flex gap-3 mb-10">
           <button
             onClick={onPlayAgain}
-            className="flex-1 border border-white py-3 font-mono text-sm text-white hover:bg-white hover:text-black transition-all duration-150"
+            className="flex-1 border border-white py-3 text-sm text-white hover:bg-white hover:text-black transition-all duration-150"
           >
             Play Again
           </button>
           <button
             onClick={onChangeMode}
-            className="flex-1 border border-white/30 py-3 font-mono text-sm text-white/60 hover:border-white hover:text-white transition-all duration-150"
+            className="flex-1 border border-white/30 py-3 text-sm text-white/60 hover:border-white hover:text-white transition-all duration-150"
           >
             Change Mode
           </button>
@@ -68,7 +68,7 @@ export default function ResultScreen({
 
         {/* Records for current mode */}
         <div>
-          <div className="text-white/30 text-xs uppercase tracking-widest mb-3 font-mono">
+          <div className="text-white/30 text-xs uppercase tracking-widest mb-3">
             Top Records — {MODES[result.mode as GameMode].label}
           </div>
           <RecordsTable records={records} />
@@ -81,10 +81,10 @@ export default function ResultScreen({
 function Stat({ label, value }: { label: string; value: string }) {
   return (
     <div>
-      <div className="text-white/30 text-xs uppercase tracking-widest font-mono mb-1">
+      <div className="text-white/30 text-xs uppercase tracking-widest mb-1">
         {label}
       </div>
-      <div className="text-white text-3xl font-mono">{value}</div>
+      <div className="text-white text-3xl font-semibold tracking-[-0.04em]">{value}</div>
     </div>
   );
 }

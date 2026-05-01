@@ -11,12 +11,12 @@ export const GAME_RULES = [
 export const MODES = {
   quick: {
     label: "Quick Mode",
-    description: "9 people / 18 cards",
+    description: "9 people / 18\ncards",
     peopleCount: 9,
   },
   full: {
     label: "Full Team",
-    description: "18 people / 36 cards",
+    description: "18 people / 36\ncards",
     peopleCount: 18,
   },
 } as const;

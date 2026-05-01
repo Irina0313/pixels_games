@@ -18,8 +18,8 @@ export default function GameHeader({
   onChangeMode,
 }: Props) {
   return (
-    <header className="border-b border-white/10 px-4 py-3 flex items-center gap-6 flex-wrap text-sm font-mono">
-      <span className="text-white font-mono tracking-widest uppercase text-xs mr-auto">
+    <header className="border-b border-white/10 px-4 py-3 flex items-center gap-6 flex-wrap text-sm">
+      <span className="text-white tracking-widest uppercase text-xs mr-auto">
         {GAME_TITLE}
         <span className="ml-3 text-white/30">{MODES[mode].label}</span>
       </span>
@@ -53,7 +53,7 @@ function Stat({ label, value }: { label: string; value: string }) {
   return (
     <div className="text-center">
       <div className="text-white/30 text-[10px] uppercase tracking-widest">{label}</div>
-      <div className="text-white text-lg leading-none mt-0.5">{value}</div>
+      <div className="text-white text-lg leading-none mt-0.5 font-semibold tracking-[-0.04em]">{value}</div>
     </div>
   );
 }

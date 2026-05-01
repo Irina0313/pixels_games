@@ -8,12 +8,12 @@ interface Props {
 export default function RecordsTable({ records }: Props) {
   if (records.length === 0) {
     return (
-      <p className="text-white/40 text-sm font-mono py-2">No records yet.</p>
+      <p className="text-white/40 text-sm py-2">No records yet.</p>
     );
   }
 
   return (
-    <table className="w-full text-sm font-mono border-collapse">
+    <table className="w-full text-sm border-collapse">
       <thead>
         <tr className="text-white/40 text-left">
           <th className="pb-2 pr-4 font-normal">#</th>
