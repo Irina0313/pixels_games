@@ -48,6 +48,7 @@
   inset: 0;
   backface-visibility: hidden;
   -webkit-backface-visibility: hidden;
+  border: 1px solid white;
 }
 
 .card-face-front {

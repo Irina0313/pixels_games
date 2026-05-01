@@ -26,7 +26,7 @@ function CardFaceFront({ card }: { card: Card }) {
   const rank = getPersonNum(card.personId);
 
   return (
-    <div className="card-face card-face-front w-full h-full border-2 border-white bg-[#0f0f0f] overflow-hidden relative">
+    <div className="card-face card-face-front w-full h-full bg-[#0f0f0f] overflow-hidden relative">
       {/* Suit icon — top-left */}
       <img
         src={suitSrc(card.suit)}
