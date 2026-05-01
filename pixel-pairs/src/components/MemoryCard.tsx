@@ -1,28 +1,6 @@
 import { useState } from "react";
 import type { Card, Suit } from "../types";
 
-// ── Card back diamond pattern ────────────────────────────────────────────────
-const DIAMOND_MASK = [
-  [0, 0, 0, 1, 0, 0, 0],
-  [0, 0, 1, 1, 1, 0, 0],
-  [0, 1, 1, 1, 1, 1, 0],
-  [1, 1, 1, 1, 1, 1, 1],
-  [0, 1, 1, 1, 1, 1, 0],
-  [0, 0, 1, 1, 1, 0, 0],
-  [0, 0, 0, 1, 0, 0, 0],
-];
-
-const _backRects = DIAMOND_MASK.flatMap((row, r) =>
-  row.flatMap((cell, c) =>
-    cell
-      ? [`<rect x="${c * 14}" y="${r * 14}" width="12" height="12" fill="white"/>`]
-      : []
-  )
-).join("");
-
-const _backSvg = `<svg xmlns='http://www.w3.org/2000/svg' width='98' height='98'>${_backRects}</svg>`;
-const BACK_URI = `url("data:image/svg+xml,${encodeURIComponent(_backSvg)}")`;
-
 // ── Helpers ──────────────────────────────────────────────────────────────────
 
 function getPersonNum(personId: string): string {
@@ -37,14 +15,9 @@ function suitSrc(suit: Suit): string {
 
 function CardFaceBack() {
   return (
-    <div
-      className="card-face card-face-back w-full h-full border-2 border-white bg-[#0f0f0f]"
-      style={{
-        backgroundImage: BACK_URI,
-        backgroundSize: "19.37% 13.96%",
-        backgroundPosition: "0.4% 0.28%",
-      }}
-    />
+    <div className="card-face card-face-back w-full h-full">
+      <img src="/assets/team/Variant=back.svg" alt="" className="w-full h-full object-cover" aria-hidden="true" />
+    </div>
   );
 }
 
