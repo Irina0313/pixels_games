@@ -1,43 +1,7 @@
 import { useState } from "react";
-import type { Card } from "../types";
-
-// ── Pixel heart ─────────────────────────────────────────────────────────────
-// 11×11 grid, 12px tiles, 14px step → 152×152px viewBox
-const HEART_MASK = [
-  [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-  [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-  [0, 0, 1, 1, 0, 0, 0, 1, 1, 0, 0],
-  [0, 1, 1, 1, 1, 0, 1, 1, 1, 1, 0],
-  [0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0],
-  [0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0],
-  [0, 0, 1, 1, 1, 1, 1, 1, 1, 0, 0],
-  [0, 0, 0, 1, 1, 1, 1, 1, 0, 0, 0],
-  [0, 0, 0, 0, 1, 1, 1, 0, 0, 0, 0],
-  [0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0],
-  [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-];
-
-function PixelHeart({ className }: { className?: string }) {
-  return (
-    <svg viewBox="0 0 152 152" className={className} aria-hidden="true">
-      {HEART_MASK.flatMap((row, r) =>
-        row.map((cell, c) => (
-          <rect
-            key={`${r}-${c}`}
-            x={c * 14}
-            y={r * 14}
-            width={12}
-            height={12}
-            fill={cell ? "#fc3202" : "rgba(255,255,255,0.08)"}
-          />
-        ))
-      )}
-    </svg>
-  );
-}
+import type { Card, Suit } from "../types";
 
 // ── Card back diamond pattern ────────────────────────────────────────────────
-// 7×7 diamond mask, 12px tiles, 14px step → 98×98px repeating tile
 const DIAMOND_MASK = [
   [0, 0, 0, 1, 0, 0, 0],
   [0, 0, 1, 1, 1, 0, 0],
@@ -65,6 +29,10 @@ function getPersonNum(personId: string): string {
   return String(parseInt(personId.replace("person-", ""), 10));
 }
 
+function suitSrc(suit: Suit): string {
+  return `/assets/team/${suit}.svg`;
+}
+
 // ── Sub-components ───────────────────────────────────────────────────────────
 
 function CardFaceBack() {
@@ -73,7 +41,6 @@ function CardFaceBack() {
       className="card-face card-face-back w-full h-full border-2 border-white bg-[#0f0f0f]"
       style={{
         backgroundImage: BACK_URI,
-        // tile is 98/506 ≈ 19.4% of card width, 98/702 ≈ 14% of card height
         backgroundSize: "19.37% 13.96%",
         backgroundPosition: "0.4% 0.28%",
       }}
@@ -87,10 +54,15 @@ function CardFaceFront({ card }: { card: Card }) {
 
   return (
     <div className="card-face card-face-front w-full h-full border-2 border-white bg-[#0f0f0f] overflow-hidden relative">
-      {/* Pixel heart — top-left, 30% of card width */}
-      <PixelHeart className="absolute left-[3.2%] top-[2.3%] w-[30%] h-auto" />
+      {/* Suit icon — top-left */}
+      <img
+        src={suitSrc(card.suit)}
+        alt={card.suit}
+        className="absolute left-[3.2%] top-[2.3%] w-[28%] h-auto"
+        aria-hidden="true"
+      />
 
-      {/* Rank number — left column, below heart */}
+      {/* Rank number — left column, below suit */}
       <span
         className="absolute left-[5%] font-pixel text-[#fc3202] leading-none select-none"
         style={{ top: "28%", fontSize: "clamp(0.8rem, 3vw, 2.8rem)" }}
@@ -122,8 +94,14 @@ function CardFaceFront({ card }: { card: Card }) {
         className="absolute left-[3.2%] font-pixel text-white leading-tight select-none"
         style={{ bottom: "3.8%", fontSize: "clamp(7px, 0.6vw, 11px)" }}
       >
-        <div>Player</div>
-        <div>{rank.padStart(2, "0")}</div>
+        {card.name === "?" ? (
+          <>
+            <div>Player</div>
+            <div>{rank.padStart(2, "0")}</div>
+          </>
+        ) : (
+          <div>{card.name}</div>
+        )}
       </div>
     </div>
   );

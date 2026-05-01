@@ -11,7 +11,7 @@ export function shuffleArray<T>(arr: T[]): T[] {
 
 export function createDeck(mode: GameMode, allPeople: Person[]): Card[] {
   const gameId = Date.now();
-  const count = mode === "quick" ? 9 : 18;
+  const count = mode === "quick" ? 8 : 16;
   const selected = shuffleArray(allPeople).slice(0, count);
 
   const cards: Card[] = [];
@@ -20,14 +20,18 @@ export function createDeck(mode: GameMode, allPeople: Person[]): Card[] {
       {
         id: `${person.id}-a-${gameId}`,
         personId: person.id,
+        name: person.name,
         image: person.image,
+        suit: person.suit,
         isFlipped: false,
         isMatched: false,
       },
       {
         id: `${person.id}-b-${gameId}`,
         personId: person.id,
+        name: person.name,
         image: person.image,
+        suit: person.suit,
         isFlipped: false,
         isMatched: false,
       }
